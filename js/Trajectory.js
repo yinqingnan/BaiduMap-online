@@ -5,48 +5,11 @@
 // 定义默认的经度，维度
 var strLongitude = ""
 var strLatitude = ""
-// var map = new BMap.Map("allmap");
-// var point = new BMap.Point(strLongitude, strLatitude);
-// map.centerAndZoom(point, 13); //地图位置和地图放大等级
+
 const map = new BMap.Map("allmap", {
     enableMapClick: false
 });
-// // 请求地址
-// var url = 'http://api.map.baidu.com/location/ip'
-// var data = {
-//     ak: "N1FRhUpF6M0lcGGY8K5MzSa0WoGhoGpO",
-//     coor: "bd09ll",
-//     callback: 'jsonpcallback' //对应值为自定义回调函数名
-// };
-// // 路径拼装
-// var buffer = [];
-// for (var key in data) {
-//     buffer.push(key + '=' + encodeURIComponent(data[key]));
-// }
-// var fullpath = url + '?' + buffer.join('&');
-// CreateScript(fullpath);
-// //生成script标签
-// function CreateScript(src) {
-//     var el = document.createElement('script');
-//     el.src = src;
-//     el.async = true;
-//     el.defer = true;
-//     document.body.appendChild(el);
-// }
-// //请求数据 进行定位
-// function jsonpcallback(res) {
-//     if (res.status == 0) {
-//         strLongitude = res.content.point.x
-//         strLatitude = res.content.point.y
-//         var point = new BMap.Point(res.content.point.x, res.content.point.y);
-//         map.centerAndZoom(point, 13); //地图位置和地图放大等级
-//     } else {
-//         strLongitude = latitude
-//         strLatitude = accuracy
-//         var point = new BMap.Point(res.content.point.x, res.content.point.y);
-//         map.centerAndZoom(point, 13); //地图位置和地图放大等级
-//     }
-// }
+
 
 
 G5BrowserFeatures.GetSystemGis().then(res => {
@@ -57,41 +20,10 @@ G5BrowserFeatures.GetSystemGis().then(res => {
         var point = new BMap.Point(strLongitude, strLatitude);
         map.centerAndZoom(point, 13); //地图位置和地图放大等级
     }else{
-        // var url = 'http://api.map.baidu.com/location/ip'
-        // var data = {
-        //     ak: "N1FRhUpF6M0lcGGY8K5MzSa0WoGhoGpO",
-        //     coor: "bd09ll",
-        //     callback: 'jsonpcallback' //对应值为自定义回调函数名
-        // };
-        // // 路径拼装
-        // var buffer = [];
-        // for (var key in data) {
-        //     buffer.push(key + '=' + encodeURIComponent(data[key]));
-        // }
-        // var fullpath = url + '?' + buffer.join('&');
-        // CreateScript(fullpath);
-        // //生成script标签
-        // function CreateScript(src) {
-        //     var el = document.createElement('script');
-        //     el.src = src;
-        //     el.async = true;
-        //     el.defer = true;
-        //     document.body.appendChild(el);
-        // }
-        // //请求数据 进行定位
-        // function jsonpcallback(res) {
-        //     if (res.status == 0) {
-        //         strLongitude = res.content.point.x
-        //         strLatitude = res.content.point.y
-        //         var point = new BMap.Point(res.content.point.x, res.content.point.y);
-        //         map.centerAndZoom(point, 13); //地图位置和地图放大等级
-        //     } else {
-        //         strLongitude = latitude
-        //         strLatitude = accuracy
-        //         var point = new BMap.Point(res.content.point.x, res.content.point.y);
-        //         map.centerAndZoom(point, 13); //地图位置和地图放大等级
-        //     }
-        // }
+        strLongitude = 116.403119
+        strLatitude = 39.914714
+        var point = new BMap.Point(strLongitude, strLatitude);
+        map.centerAndZoom(point, 13); //地图位置和地图放大等级
     }
 });
 

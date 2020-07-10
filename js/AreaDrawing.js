@@ -62,7 +62,7 @@ function DrawPOLYGON(type,num) {
             }
         }
     }else{
-        layer.alert('请先结束绘制', {title: '提示'})
+        layer.alert('请先完成本次绘制', {title: '提示'})
     }
 
 }

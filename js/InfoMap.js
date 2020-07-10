@@ -4,43 +4,48 @@ var strLongitude, strLatitude
 var map = new BMap.Map("allmap", {
     enableMapClick: true, //是否开启底图可点功能
 });
-// 请求地址
-// var url = 'http://api.map.baidu.com/location/ip'
-// var data = {
-//     ak: "N1FRhUpF6M0lcGGY8K5MzSa0WoGhoGpO",
-//     coor: "bd09ll",
-//     callback: 'jsonpcallback' //对应值为自定义回调函数名
-// };
 
-// // // 路径拼装
-// var buffer = [];
-// for (var key in data) {
-//     buffer.push(key + '=' + encodeURIComponent(data[key]));
-// }
-// var fullpath = url + '?' + buffer.join('&');
-// CreateScript(fullpath);
-// //生成script标签
-// function CreateScript(src) {
-//     var el = document.createElement('script');
-//     el.src = src;
-//     el.async = true;
-//     el.defer = true;
-//     document.body.appendChild(el);
-// }
-// //请求数据 进行定位
-// function jsonpcallback(res) {
-//     if (res.status == 0) {
-//         strLongitude = res.content.point.x
-//         strLatitude = res.content.point.y
-//         var point = new BMap.Point(res.content.point.x, res.content.point.y);
-//         map.centerAndZoom(point, 13); //地图位置和地图放大等级
-//     } else {
-//         strLongitude = latitude
-//         strLatitude = accuracy
-//         var point = new BMap.Point(res.content.point.x, res.content.point.y);
-//         map.centerAndZoom(point, 13); //地图位置和地图放大等级
-//     }
-// }
+// TODO 本地请求数据接口
+var axios = {
+    // 请求地址
+    // var url = 'http://api.map.baidu.com/location/ip'
+    // var data = {
+    //     ak: "N1FRhUpF6M0lcGGY8K5MzSa0WoGhoGpO",
+    //     coor: "bd09ll",
+    //     callback: 'jsonpcallback' //对应值为自定义回调函数名
+    // };
+
+    // // // 路径拼装
+    // var buffer = [];
+    // for (var key in data) {
+    //     buffer.push(key + '=' + encodeURIComponent(data[key]));
+    // }
+    // var fullpath = url + '?' + buffer.join('&');
+    // CreateScript(fullpath);
+    // //生成script标签
+    // function CreateScript(src) {
+    //     var el = document.createElement('script');
+    //     el.src = src;
+    //     el.async = true;
+    //     el.defer = true;
+    //     document.body.appendChild(el);
+    // }
+    // //请求数据 进行定位
+    // function jsonpcallback(res) {
+    //     if (res.status == 0) {
+    //         strLongitude = res.content.point.x
+    //         strLatitude = res.content.point.y
+    //         var point = new BMap.Point(res.content.point.x, res.content.point.y);
+    //         map.centerAndZoom(point, 13); //地图位置和地图放大等级
+    //     } else {
+    //         strLongitude = latitude
+    //         strLatitude = accuracy
+    //         var point = new BMap.Point(res.content.point.x, res.content.point.y);
+    //         map.centerAndZoom(point, 13); //地图位置和地图放大等级
+    //     }
+    // }
+}
+
 
 
 G5BrowserFeatures.GetSystemGis().then(res => {
@@ -411,20 +416,24 @@ function stopPropagation(e) {
 }
 // 电子围栏管理
 function Administration() {
-    if(state){
+    if (state) {
         G5BrowserFeatures.ShowElectricfence();
-    }else{
-        layer.alert('请先结束绘制', {title: '提示'})
+    } else {
+        layer.alert('请先完成本次绘制', {
+            title: '提示'
+        })
     }
-    
+
 }
 // 区域管理
 function ShowGisAreaMgtList() {
-    
-    if(state){
+
+    if (state) {
         G5BrowserFeatures.ShowGisAreaMgtList();
-    }else{
-        layer.alert('请先结束绘制', {title: '提示'})
+    } else {
+        layer.alert('请先完成本次绘制', {
+            title: '提示'
+        })
     }
 }
 
@@ -466,7 +475,3 @@ var Api_RailDltcoverings = function () {
         }
     }
 };
-
-
-
-

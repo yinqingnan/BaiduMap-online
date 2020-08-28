@@ -1283,8 +1283,9 @@ var Api_SosRelieve = function Api_SosRelieve(strLongitude, b, c, d, e) {
         }
       }
     }
-  } // G5BrowserFeatures.MapRefreshGis(phoneNum)
+  }
 
+  G5BrowserFeatures.MapRefreshGis(phoneNum);
 }; //SOS描点新
 
 

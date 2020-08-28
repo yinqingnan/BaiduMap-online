@@ -27,7 +27,7 @@ function draw(type) {
         myDrawingManagerObject.open();
         myDrawingManagerObject.setDrawingMode(type);
     }else{
-        layer.alert('请先完成本次绘制', {title: '提示'})
+        layer.alert('请先结束本次绘制。<br>双击鼠标左键后，取消或者编辑内容后保存。', {title: '提示'})
     }
   
 }

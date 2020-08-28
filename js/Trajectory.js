@@ -6,10 +6,48 @@
 var strLongitude = ""
 var strLatitude = ""
 
+
+
+//     var url = 'http://api.map.baidu.com/location/ip'
+// var data = {
+//     ak: "N1FRhUpF6M0lcGGY8K5MzSa0WoGhoGpO",
+//     coor: "bd09ll",
+//     callback: 'jsonpcallback' //对应值为自定义回调函数名
+// };
+// var buffer = [];
+// for (var key in data) {
+//     buffer.push(key + '=' + encodeURIComponent(data[key]));
+// }
+// var fullpath = url + '?' + buffer.join('&');
+// CreateScript(fullpath);
+// // //生成script标签
+// function CreateScript(src) {
+//     var el = document.createElement('script');
+//     el.src = src;
+//     el.async = true;
+//     el.defer = true;
+//     document.body.appendChild(el);
+// }
+// // //请求数据 进行定位
+// function jsonpcallback(res) {
+//     if (res.status == 0) {
+//         strLongitude = res.content.point.x
+//         strLatitude = res.content.point.y
+//         var point = new BMap.Point(res.content.point.x, res.content.point.y);
+//         map.centerAndZoom(point, 13); //地图位置和地图放大等级
+//     } else {
+//         strLongitude = latitude
+//         strLatitude = accuracy
+//         var point = new BMap.Point(res.content.point.x, res.content.point.y);
+//         map.centerAndZoom(point, 13); //地图位置和地图放大等级
+//     }
+// }
+
+
+
 const map = new BMap.Map("allmap", {
     enableMapClick: false
 });
-
 
 
 G5BrowserFeatures.GetSystemGis().then(res => {
@@ -150,9 +188,22 @@ var res = {
 // 添加比例尺、缩放、平移工具条
 map.enableScrollWheelZoom(); //启动鼠标滚轮缩放地图
 // 左上角，添加比例尺
-map.addControl(new BMap.NavigationControl());    
-map.addControl(new BMap.ScaleControl({ anchor: BMAP_ANCHOR_BOTTOM_RIGHT }));    
+// map.addControl(new BMap.NavigationControl());    
+// map.addControl(new BMap.ScaleControl({ anchor: BMAP_ANCHOR_BOTTOM_RIGHT }));    
+var top_left_control = new BMap.ScaleControl({
+    anchor: BMAP_ANCHOR_BOTTOM_RIGHT
+}); // 左上角，添加比例尺
+map.addControl(top_left_control);
+// 添加带有定位的导航控件
+var navigationControl = new BMap.NavigationControl({
+    // 靠左上角位置
+    anchor: BMAP_ANCHOR_TOP_LEFT,
+    // LARGE类型
+    type: BMAP_NAVIGATION_CONTROL_LARGE,
+    // 是否启用显示定位
+    enableGeolocation: false
 
+});
 
 //地图加载完时关闭预加载模态框
 map.addEventListener("tilesloaded", function () {

@@ -103,6 +103,7 @@ function Api_SosTracePoint(newGis, oldGis, clear) {
                 map.centerAndZoom(point, 16);
                 map.addOverlay(sosmarker); // 将标注添加到地图中
                 SOSInfoWindow(newGis, sosmarker, point)
+                console.log(newGis)
                 // SOS弹窗信息
                 function SOSInfoWindow(newGis, sosmarker, point) {
                     newGis.behavior = "'" + 'SOS' + "'"
@@ -242,6 +243,7 @@ var support = function (strNum, CallLine, strName, lng, lat, e) {
 
 //  TODO 清除SOS
 var Api_SosRelieve = function (strLongitude, b, c, d, e) {
+    console.log(strLongitude,b, c, d, e)
     var allOverlay = map.getOverlays();
     for (let i = 0; i < allOverlay.length; i++) {
         if (allOverlay[i] instanceof BMap.Marker) {
